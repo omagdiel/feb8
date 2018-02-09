@@ -1,7 +1,12 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%#= devise_error_messages! %>
+  <% if resource.errors.any? %>
+    <% resource.errors.full_messages.each do |error| %>
+      <%= js add_gritter(error, title: "Owen Magdiel Portfolio", sticky: false) %>
+    <% end %>
+  <% end %>
 
   <div class="field">
     <%= f.label :email %><br />
